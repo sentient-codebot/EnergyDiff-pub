@@ -1,0 +1,64 @@
+---
+# standard config for transformer GPT2-12 (12 decoder layers)
+# Date: 2024-03-13
+#   Optimal EMA scaling rule:
+#     - if p is optimal for batch size b
+#     - then p ** tau is optimal for batch size b * tau
+#   dpm_solver_sample: True
+#   -- choosing lr --
+#   1. use const learning rate 1e-4
+#   2. use lr_base / sqrt(dim_base) scaling rule
+#     lr_base = 8.8388
+#     lr ~= lr_base / sqrt(dim_base) 
+#     lr(128) = 0.0001
+#     lr(512) = 0.0001 * 0.5
+
+# dataset setting
+load_data: True # False -> everytime we shuffle dataset
+normalize_data: True
+vectorize_data: True
+style_vectorize: 'patchify'
+vectorize_window_size: 8
+
+# model setting
+model_class: 'gpt2'
+dim_base: 512
+dropout: 0.1
+num_attn_head: 8
+#    Transformer specific
+num_encoder_layer: 0
+num_decoder_layer: 12
+dim_feedforward: 2048 # DiT default ratio: 4 * dim_base
+
+# diffusion setting
+dpm_solver_sample: True
+num_diffusion_step: 1000
+num_sampling_step: 50 # After training, can use 100~200, or 1000. 
+diffusion_objective: 'pred_v'
+learn_variance: False # No need for dpm-solver
+sigma_small: True
+beta_schedule_type: 'cosine'
+ddim_sampling_eta: 0.
+
+# loss
+mse_loss: True
+rescale_learned_variance: True
+only_central: False # Deprecated
+
+# train setting
+num_train_step: 100000
+save_and_sample_every: 50000
+val_every: 2500
+val_batch_size: 512
+num_sample: 512
+
+train_batch_size: 64 # Faster + More iterations = Better
+train_lr: 0.0001 # Can be tuned
+adam_betas: [0.9, 0.999]
+
+gradient_accumulate_every: 1
+ema_update_every: 5
+ema_decay: 0.9999
+amp: True # automatic mixed precision
+mixed_precision_type: 'fp16'
+split_batches: True

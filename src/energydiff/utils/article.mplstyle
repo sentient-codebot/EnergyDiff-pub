@@ -1,0 +1,23 @@
+# Standard figure for articles, fontsize will be normal/small
+# Author: Nan Lin
+# Date: 2023-11-26
+
+# figure size in inches
+figure.figsize: 12, 6
+figure.titlesize: 22
+figure.titleweight: bold
+figure.dpi: 300
+figure.autolayout: True
+# axes
+axes.titlesize: 22
+axes.labelsize: 18
+# ticks
+xtick.labelsize: 16
+xtick.minor.visible: True
+ytick.labelsize: 16
+ytick.minor.visible: True
+# cmap
+image.cmap: Blues
+# font
+font.family: serif
+font.serif: Times

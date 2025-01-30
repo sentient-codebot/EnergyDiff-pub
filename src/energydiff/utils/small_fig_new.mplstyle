@@ -1,0 +1,24 @@
+# Standard figure for articles, fontsize will be normal/small
+# Author: Nan Lin
+# Date: 2024-06-06
+
+# figure size in inches
+figure.figsize: 6, 3
+figure.titlesize: 12
+figure.titleweight: bold
+figure.dpi: 300
+figure.constrained_layout.use: True
+figure.constrained_layout.h_pad: 0.02
+figure.constrained_layout.w_pad: 0.02
+# axes
+axes.titlesize: 12
+axes.labelsize: 10
+# ticks
+xtick.labelsize: 8
+xtick.minor.visible: True
+ytick.labelsize: 8
+ytick.minor.visible: True
+# cmap
+image.cmap: Blues
+# font
+font.family: serif

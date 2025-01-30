@@ -1,0 +1,62 @@
+---
+# standard config for transformer GPT2-6 (6 decoder layers)
+# Designed for 5x288 (5min, 24h) formulation
+# Date: 2024-01-19
+#   GPT2 specific
+#   256 / 2048 / 6 / 745 ~= 8.9GB
+#   256 / 2048 / 6 / 1024 ~= 12.23GB
+#   512 / 2048 / 6 / 1024 (8 head) ~= 14.9GB
+#   512 / 2048 / 8 / 1024 (8 head) ~= 18.8GB
+#   512 / 2048 / 12 / 512 (8 head) ~= 19.1GB
+#   512 / 2048 / 24 / 256 (8 head) ~= 18.9GB
+
+# dataset setting
+load_data: True # False -> everytime we shuffle dataset
+normalize_data: True
+vectorize_data: False
+style_vectorize: 'patchify'
+vectorize_window_size: 5
+train_ratio: 0.8
+val_ratio: 0.1
+test_ratio: 0.1
+
+# model setting
+model_class: 'gpt2'
+dim_base: 256
+dropout: 0.1
+num_attn_head: 8
+#    Transformer specific
+num_encoder_layer: 0
+num_decoder_layer: 6
+dim_feedforward: 2048 # DiT default ratio: 4 * dim_base
+
+# diffusion setting
+num_diffusion_step: 4000
+num_sampling_step: 400
+diffusion_objective: 'pred_v'
+learn_variance: True
+sigma_small: True
+beta_schedule_type: 'cosine'
+ddim_sampling_eta: 0.
+
+# loss
+mse_loss: True
+rescale_learned_variance: True
+only_central: False
+
+# train setting
+num_train_step: 10000
+save_and_sample_every: 1000
+val_every: 250
+num_sample: 400
+
+train_batch_size: 512 # a more or less approp. batch size for 23GB GPU
+train_lr: 0.0001
+adam_betas: [0.9, 0.999]
+
+gradient_accumulate_every: 1
+ema_update_every: 5
+ema_decay: 0.9999
+amp: True # automatic mixed precision
+mixed_precision_type: 'fp16'
+split_batches: True

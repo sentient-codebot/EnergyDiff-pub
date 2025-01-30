@@ -1,0 +1,57 @@
+# Standard figure for IEEE two-column articles, figure for one column width
+# IEEE two-column articles format
+# single column widht: 3.5 inch
+# column height: 9.25 inch
+# main text: 10 pt
+# abstract text: 9 pt
+# table caption: 8 pt
+# figure caption: 8 pt
+# footnotes: 8 pt
+#
+# **Recommendations**: 
+# - fix the figure width to 3.5 inch, adjust the height accordingly with the subplot number.
+#
+#
+# Author: Nan Lin
+# Date: 2025-01-21
+
+# figure size in inches; font size in points
+figure.figsize: 3.5, 2.5
+figure.titlesize: 8
+figure.titleweight: bold
+figure.dpi: 300
+figure.constrained_layout.use: True
+figure.constrained_layout.h_pad: 0.02
+figure.constrained_layout.w_pad: 0.02
+figure.constrained_layout.hspace: 0.02
+figure.constrained_layout.wspace: 0.02
+# axes
+axes.titlesize: 8
+axes.titlepad: 4.0
+axes.labelsize: 6
+axes.labelpad: 2.0
+axes.linewidth: 0.4
+# ticks
+xtick.major.size: 2 # default, the tick length
+xtick.minor.size: 1
+xtick.major.width: 0.4
+xtick.minor.width: 0.2
+xtick.labelsize: 6
+xtick.minor.visible: True
+xtick.major.pad: 2
+xtick.minor.pad: 1.9
+
+ytick.major.size: 3.5
+ytick.minor.size: 2
+ytick.major.width: 0.4
+ytick.minor.width: 0.2
+ytick.labelsize: 6
+ytick.minor.visible: True
+ytick.major.pad: 2
+ytick.minor.pad: 1.9
+
+
+# cmap
+image.cmap: Blues
+# font
+font.family: serif

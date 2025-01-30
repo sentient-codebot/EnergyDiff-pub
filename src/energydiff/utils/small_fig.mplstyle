@@ -1,0 +1,26 @@
+# Small figure using tight layout for articles, fontsize will be larger
+# Author: Nan Lin
+# Date: 2023-11-26
+
+# figure
+figure.figsize: 10.5, 8
+figure.titlesize: 32
+figure.dpi: 300
+figure.autolayout: True
+savefig.bbox: tight
+# axes
+axes.titlesize: 28
+axes.titlepad: 14
+axes.labelsize: 36
+axes.labelpad: 8
+# ticks
+xtick.labelsize: 28
+xtick.minor.visible: True
+ytick.labelsize: 28
+ytick.minor.visible: True
+# legend
+legend.fontsize: 22
+# cmap
+image.cmap: Blues
+# font
+font.family: serif

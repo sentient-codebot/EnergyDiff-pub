@@ -1,0 +1,13 @@
+# pyproject.toml
+[project]
+name = "energydiff"
+version = "2.7.0"
+dependencies = [
+    "numpy",
+    "torch",
+    "accelerate",
+    "ema-pytorch",
+    "umap-learn"
+]
+[tool.setuptools]
+package-dir = {"" = "src"}

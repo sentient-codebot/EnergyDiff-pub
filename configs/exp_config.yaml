@@ -1,0 +1,66 @@
+data:
+  dataset: cossmic
+  load: true
+  normalize: true
+  pit: false
+  resolution: 1min
+  root: data/cossmic
+  shuffle: true
+  style_vectorize: patchify
+  subdataset_names:
+  - grid-import_residential
+  target_labels: null
+  train_season: winter
+  val_season: winter
+  vectorize: true
+  vectorize_window_size: 8
+diffusion:
+  beta_schedule_type: cosine
+  cfg_scale: 1.0
+  learn_variance: false
+  num_diffusion_step: 1000
+  prediction_type: pred_v
+  sigma_small: true
+  use_rectified_flow: false
+exp_id: 0.0.0
+log_wandb: false
+model:
+  cond_dropout: 0.1
+  conditioning: false
+  dim_base: 512
+  dim_feedforward: 2048
+  dropout: 0.1
+  freeze_layers: false
+  load_milestone: 10
+  load_runid: null
+  model_class: gpt2
+  num_attn_head: 8
+  num_decoder_layer: 12
+  num_encoder_layer: 0
+  resume: false
+sample:
+  dpm_solver_sample: true
+  num_sample: 4000
+  num_sampling_step: 100
+  val_batch_size: 256
+train:
+  adam_betas:
+  - 0.9
+  - 0.999
+  amp: true
+  batch_size: 64
+  ema_decay: 0.9999
+  ema_update_every: 5
+  gradient_accumulate_every: 1
+  lr: 0.0001
+  mixed_precision_type: fp16
+  num_train_step: 100000
+  save_and_sample_every: 50000
+  split_batches: true
+  val_batch_size: 256
+  val_every: 1250
+  val_sample_config:
+    dpm_solver_sample: true
+    num_sample: 512
+    num_sampling_step: 50
+    val_batch_size: 256
