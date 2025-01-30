@@ -1,10 +1,12 @@
 # EnergyDiff
 
-Diffusion-based energy time series data generation.
+The public repository of diffusion-based energy time series data generation. Paper: [EnergyDiff: Universal Time-Series Energy Data Generation using Diffusion Models](https://arxiv.org/abs/2407.13538). 
 
 # Installation
 
-Install the required packages. 
+1. Install the required dependency packages. 
+
+2. Run the following installation command.
 
 ```bash
 pip install -e .
