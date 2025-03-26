@@ -4,12 +4,10 @@ The public repository of diffusion-based energy time series data generation. Pap
 
 # Installation
 
-1. Install the required dependency packages. 
-
-2. Run the following installation command.
-
+1. Install the required dependency packages. This is the easiest to be done with `uv`. Search for and install the package manager `uv` first. Then,
 ```bash
-pip install -e .
+cd path/to/this/repository
+uv sync
 ```
 
 # Run
