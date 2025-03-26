@@ -13,11 +13,16 @@ dependencies = [
     "wandb>=0.19.8",
     "scipy>=1.15.2",
     "pandas>=2.2.3",
+    "h5py>=3.13.0",
+    "easy-ml-config>=1.0.4",
 ]
 [dependency-groups]
 dev = [
     "pytest",
-    "umap-learn",
+    "numba==0.61", # important to make umap compatible
+    "umap-learn>=0.5.7",
+    "seaborn>=0.13.2",
+    "statsmodels>=0.14.4",
 ]
 
 [tool.setuptools]

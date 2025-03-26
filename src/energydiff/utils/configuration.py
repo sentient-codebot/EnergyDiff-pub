@@ -1,66 +1,6 @@
 from dataclasses import dataclass, fields, field
-import os
-from abc import abstractmethod
-from functools import partial
-from argparse import ArgumentParser, Namespace
 
-import yaml
-
-@dataclass
-class BaseConfig:
-    subconfigs = {}
-    
-    @classmethod
-    @abstractmethod
-    def init_subconfig(cls, subconfig_name, subconfig_dict):
-        raise NotImplementedError
-        
-    @classmethod
-    def from_dict(cls, kwargs: dict):
-        valid_keys = {f.name for f in fields(cls)}
-        filtered_kwargs = {k: v for k, v in kwargs.items() if k in valid_keys}
-        filtered_kwargs = {}
-        for k, v in kwargs.items():
-            if k not in valid_keys:
-                continue
-            if k in cls.subconfigs.keys():
-                if isinstance(v, dict):
-                    filtered_kwargs[k] = cls.init_subconfig(k, v)
-                elif isinstance(v, cls.subconfigs[k]):
-                    filtered_kwargs[k] = v
-                else:
-                    raise ValueError(f"Invalid type for {k}")
-            else:
-                filtered_kwargs[k] = v
-
-        return cls(**filtered_kwargs)
-    
-    def to_dict(self):
-        out_dict = {}
-        for key, item in self.__dict__.items():
-            if key in self.subconfigs and isinstance(item, BaseConfig):
-                out_dict[key] = item.to_dict()
-            else:
-                out_dict[key] = item
-        return out_dict
-    
-    @classmethod
-    def inherit(cls, parent, **kwargs):
-        parent_dict = parent.to_dict()
-        parent_dict.update(kwargs)
-        return cls.from_dict(parent_dict)
-    
-    @classmethod
-    def from_yaml(cls, path:str):
-        with open(path, 'r') as f:
-            _obj = cls.from_dict(yaml.safe_load(f))
-            _obj.load_path = path
-            
-        return _obj
-    
-    def to_yaml(self, path):
-        with open(path, 'w') as f:
-            yaml.safe_dump(self.to_dict(), f)
+from easy_ml_config import BaseConfig
         
 @dataclass
 class DataConfig(BaseConfig):
