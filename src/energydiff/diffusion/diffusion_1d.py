@@ -19,7 +19,6 @@ from einops import rearrange, reduce, einsum
 from einops.layers.torch import Rearrange
 
 import pytorch_lightning as pl
-import torchmetrics
 from accelerate import Accelerator 
 from ema_pytorch import EMA
 

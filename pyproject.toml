@@ -7,7 +7,18 @@ dependencies = [
     "torch",
     "accelerate",
     "ema-pytorch",
-    "umap-learn"
+    "einops",
+    "matplotlib>=3.10.1",
+    "pytorch-lightning>=2.5.1",
+    "wandb>=0.19.8",
+    "scipy>=1.15.2",
+    "pandas>=2.2.3",
 ]
+[dependency-groups]
+dev = [
+    "pytest",
+    "umap-learn",
+]
+
 [tool.setuptools]
 package-dir = {"" = "src"}
